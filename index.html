@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway Entry - Blue Edition</title>
+    <title>Giveaway Entry - Desktop View Only</title>
     <style>
         :root {
             --primary-blue: #3498db;
@@ -13,37 +12,37 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--light-blue);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            /* Mengunci lebar agar HP harus scrolling horizontal (ciri khas desktop view) */
+            min-width: 950px; 
         }
 
-        /* Main Container Split Layout */
         .main-container {
             display: flex;
             background: white;
-            width: 90%;
-            max-width: 850px;
-            min-height: 500px;
+            width: 900px; /* Lebar dikunci (Fixed Width) */
+            height: 550px;
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(52, 152, 219, 0.2);
         }
 
-        /* Left Side (Form Area) */
+        /* Sisi Kiri (Form) */
         .form-side {
             flex: 1.2;
-            padding: 40px;
+            padding: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        /* Right Side (Blue Banner) */
+        /* Sisi Kanan (Banner Biru) */
         .info-side {
             flex: 1;
             background-color: var(--primary-blue);
@@ -54,10 +53,10 @@
             align-items: center;
             padding: 40px;
             text-align: center;
-            border-radius: 120px 0 0 120px; /* Curve effect */
+            border-radius: 150px 0 0 150px; /* Lengkungan Desktop */
         }
 
-        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: -1px; }
+        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 28px; text-transform: uppercase; }
         .sub-h2 { color: var(--primary-blue); font-weight: 800; margin-bottom: 30px; font-size: 13px; text-transform: uppercase; }
 
         .input-group { margin-bottom: 18px; }
@@ -71,8 +70,6 @@
             font-size: 14px;
             font-weight: 800;
             background: #f9f9f9;
-            transition: 0.3s;
-            color: var(--text-dark);
         }
 
         input:focus { outline: none; border-color: var(--primary-blue); background: white; }
@@ -89,12 +86,8 @@
             text-transform: uppercase;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-            transition: 0.3s;
         }
 
-        .btn-submit:hover { background: var(--dark-blue); transform: translateY(-3px); }
-
-        /* Loading Spinner */
         .spinner {
             width: 50px;
             height: 50px;
@@ -109,15 +102,9 @@
 
         #loading, #verification { display: none; text-align: center; }
 
-        .info-side h1 { font-size: 45px; margin: 0; font-weight: 900; line-height: 1; }
-        .info-side p { font-weight: 700; opacity: 0.9; margin-top: 15px; font-size: 1.1rem; }
+        .info-side h1 { font-size: 50px; margin: 0; font-weight: 900; }
+        .info-side p { font-weight: 700; opacity: 0.9; margin-top: 15px; font-size: 1.2rem; }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .main-container { flex-direction: column; width: 95%; margin: 20px 0; }
-            .info-side { border-radius: 0; padding: 40px 20px; order: -1; }
-            .form-side { padding: 30px 20px; }
-        }
     </style>
 </head>
 <body>
@@ -127,17 +114,10 @@
             <div id="registration">
                 <h2>🎁 JOIN GIVEAWAY</h2>
                 <p class="sub-h2">ENTER YOUR DETAILS TO WIN</p>
-                
                 <form id="giveawayForm">
-                    <div class="input-group">
-                        <input type="text" id="fullname" placeholder="FULL NAME" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="ig_user" placeholder="INSTAGRAM USERNAME" required>
-                    </div>
+                    <div class="input-group"><input type="text" id="fullname" placeholder="Your Name" required></div>
+                    <div class="input-group"><input type="email" id="email" placeholder="Email address" required></div>
+                    <div class="input-group"><input type="text" id="ig_user" placeholder="@Username" required></div>
                     <button type="submit" class="btn-submit">SUBMIT ENTRY</button>
                 </form>
             </div>
@@ -145,19 +125,19 @@
             <div id="loading">
                 <div class="spinner"></div>
                 <h2>PROCESSING...</h2>
-                <p style="font-weight: 800;">SYNCING YOUR DATA</p>
+                <p style="font-weight: 800;">SYNCING DATA</p>
             </div>
 
             <div id="verification">
                 <h2 style="color: var(--primary-blue);">✓ REGISTERED</h2>
-                <p style="font-weight: 900; margin: 20px 0; line-height: 1.5;">COMPLETED VERIFICATION <br> TO GET THE PRIZE</p>
+                <p style="font-weight: 900; margin: 25px 0; font-size: 1.1rem;">COMPLETED VERIFICATION <br> TO GET THE PRIZE</p>
                 <button class="btn-submit" style="background: #2c3e50;" onclick="finalRedirect()">VERIFY NOW</button>
             </div>
         </div>
 
         <div class="info-side">
             <h1>Big Luck!</h1>
-            <p>Don't miss out on this exclusive prize. Fill the form and win!</p>
+            <p>Don't miss out on this prize!</p>
         </div>
     </div>
 
@@ -169,11 +149,8 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
             regDiv.style.display = 'none';
             loadDiv.style.display = 'block';
-
-            // Menunggu 2.5 detik seolah sedang memproses
             setTimeout(() => {
                 loadDiv.style.display = 'none';
                 verifyDiv.style.display = 'block';
@@ -181,7 +158,7 @@
         });
 
         function finalRedirect() {
-            // GANTI LINK DI BAWAH INI DENGAN LINK REDIRECT TUJUANMU
+            // GANTI LINK DI BAWAH INI
             window.location.href = "https://www.google.com";
         }
     </script>
