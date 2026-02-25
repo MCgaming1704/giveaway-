@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway - Join Now</title>
+    <title>Giveaway Entry - Blue Edition</title>
     <style>
         :root {
-            --primary-green: #76ba6a;
-            --dark-green: #5e9c54;
-            --text-dark: #333;
-            --bg-light: #e0e7ff;
+            --primary-blue: #3498db;
+            --dark-blue: #2980b9;
+            --light-blue: #ebf5fb;
+            --text-dark: #2c3e50;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-blue);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
 
-        /* Main Container */
+        /* Main Container Split Layout */
         .main-container {
             display: flex;
             background: white;
             width: 90%;
             max-width: 850px;
-            min-height: 480px;
+            min-height: 500px;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(52, 152, 219, 0.2);
         }
 
-        /* Left Side (Form) */
+        /* Left Side (Form Area) */
         .form-side {
             flex: 1.2;
             padding: 40px;
@@ -43,10 +43,10 @@
             justify-content: center;
         }
 
-        /* Right Side (Green Banner) */
+        /* Right Side (Blue Banner) */
         .info-side {
             flex: 1;
-            background-color: var(--primary-green);
+            background-color: var(--primary-blue);
             color: white;
             display: flex;
             flex-direction: column;
@@ -54,75 +54,79 @@
             align-items: center;
             padding: 40px;
             text-align: center;
-            border-radius: 100px 0 0 100px; /* Lengkungan ikonik */
+            border-radius: 120px 0 0 120px; /* Curve effect */
         }
 
-        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 24px; text-transform: uppercase; }
-        .sub-h2 { color: var(--primary-green); font-weight: 800; margin-bottom: 25px; font-size: 14px; }
+        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: -1px; }
+        .sub-h2 { color: var(--primary-blue); font-weight: 800; margin-bottom: 30px; font-size: 13px; text-transform: uppercase; }
 
-        .input-group { margin-bottom: 15px; position: relative; }
+        .input-group { margin-bottom: 18px; }
         
         input {
             width: 100%;
-            padding: 15px;
-            border: 2.5px solid #eee;
-            border-radius: 12px;
+            padding: 16px;
+            border: 3px solid #f0f0f0;
+            border-radius: 15px;
             box-sizing: border-box;
             font-size: 14px;
-            font-weight: 700;
-            background: #fafafa;
+            font-weight: 800;
+            background: #f9f9f9;
+            transition: 0.3s;
+            color: var(--text-dark);
         }
 
-        input:focus { outline: none; border-color: var(--primary-green); }
+        input:focus { outline: none; border-color: var(--primary-blue); background: white; }
 
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            background: var(--primary-green);
+            padding: 18px;
+            background: var(--primary-blue);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 15px;
             font-weight: 900;
             font-size: 16px;
+            text-transform: uppercase;
             cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 5px 15px rgba(118, 186, 106, 0.4);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
             transition: 0.3s;
         }
 
-        .btn-submit:hover { background: var(--dark-green); transform: translateY(-2px); }
+        .btn-submit:hover { background: var(--dark-blue); transform: translateY(-3px); }
 
-        /* Spinner */
+        /* Loading Spinner */
         .spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--primary-green);
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         #loading, #verification { display: none; text-align: center; }
 
-        .info-side h1 { font-size: 40px; margin: 0; font-weight: 900; }
-        .info-side p { font-weight: 600; opacity: 0.9; margin-top: 10px; }
+        .info-side h1 { font-size: 45px; margin: 0; font-weight: 900; line-height: 1; }
+        .info-side p { font-weight: 700; opacity: 0.9; margin-top: 15px; font-size: 1.1rem; }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .main-container { flex-direction: column; height: auto; }
-            .info-side { border-radius: 0; padding: 30px; order: -1; }
+            .main-container { flex-direction: column; width: 95%; margin: 20px 0; }
+            .info-side { border-radius: 0; padding: 40px 20px; order: -1; }
+            .form-side { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="main-container">
-        <div class="form-side" id="form-content">
+        <div class="form-side">
             <div id="registration">
                 <h2>🎁 JOIN GIVEAWAY</h2>
-                <p class="sub-h2">Fill your details to enter the draw</p>
+                <p class="sub-h2">ENTER YOUR DETAILS TO WIN</p>
                 
                 <form id="giveawayForm">
                     <div class="input-group">
@@ -140,20 +144,20 @@
 
             <div id="loading">
                 <div class="spinner"></div>
-                <h2 style="margin-top:20px;">PROCESSING...</h2>
-                <p style="font-weight: 700;">Please wait a moment</p>
+                <h2>PROCESSING...</h2>
+                <p style="font-weight: 800;">SYNCING YOUR DATA</p>
             </div>
 
             <div id="verification">
-                <h2 style="color: var(--primary-green);">✓ SUCCESS!</h2>
-                <p style="font-weight: 800; margin: 20px 0;">COMPLETED VERIFICATION TO GET THE PRIZE</p>
-                <button class="btn-submit" style="background: #333;" onclick="finalRedirect()">VERIFY NOW</button>
+                <h2 style="color: var(--primary-blue);">✓ REGISTERED</h2>
+                <p style="font-weight: 900; margin: 20px 0; line-height: 1.5;">COMPLETED VERIFICATION <br> TO GET THE PRIZE</p>
+                <button class="btn-submit" style="background: #2c3e50;" onclick="finalRedirect()">VERIFY NOW</button>
             </div>
         </div>
 
         <div class="info-side">
-            <h1>Good Luck!</h1>
-            <p>Winners will be announced soon. Make sure your data is valid!</p>
+            <h1>Big Luck!</h1>
+            <p>Don't miss out on this exclusive prize. Fill the form and win!</p>
         </div>
     </div>
 
@@ -166,11 +170,10 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Transisi ke loading
             regDiv.style.display = 'none';
             loadDiv.style.display = 'block';
 
-            // Jeda 2.5 detik
+            // Menunggu 2.5 detik seolah sedang memproses
             setTimeout(() => {
                 loadDiv.style.display = 'none';
                 verifyDiv.style.display = 'block';
@@ -178,7 +181,7 @@
         });
 
         function finalRedirect() {
-            // GANTI LINK INI KE LINK REDIRECT TUJUANMU
+            // GANTI LINK DI BAWAH INI DENGAN LINK REDIRECT TUJUANMU
             window.location.href = "https://www.google.com";
         }
     </script>
