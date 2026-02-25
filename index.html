@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Giveaway Entry</title>
+    <style>
+        /* Modern & Clean UI */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        /* Card Container */
+        .container {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            color: #333;
+        }
+
+        h2 { 
+            color: #0f3460; 
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        p { 
+            font-size: 0.95rem; 
+            color: #555; 
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        /* Form Styling */
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            font-size: 0.85rem;
+            color: #0f3460;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0f3460;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #cf3a54;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎁 Join Giveaway</h2>
+    <p>Complete the form below for a chance to win our exclusive prize!</p>
+
+    <form id="giveawayForm">
+        <div class="input-group">
+            <label for="nama">Full Name</label>
+            <input type="text" id="nama" placeholder="Enter your name" required>
+        </div>
+        
+        <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="example@mail.com" required>
+        </div>
+
+        <button type="submit">Enter Now</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('giveawayForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('nama').value;
+        
+        // Success Message
+        alert("Thank you, " + name + "! You're being redirected to the confirmation page.");
+
+        // REDIRECT LINK: Replace the URL below with your actual link
+        window.location.href = "https://www.google.com"; 
+    });
+</script>
+
+</body>
+</html>
