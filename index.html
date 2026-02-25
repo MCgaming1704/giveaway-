@@ -3,133 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Giveaway Entry</title>
+    <title>Giveaway Entry</title>
     <style>
-        /* Modern & Clean UI */
+        :root {
+            --primary-green: #2ecc71;
+            --dark-green: #27ae60;
+            --bg-light: #f4f7f6;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            color: #ffffff;
         }
 
-        /* Card Container */
-        .container {
-            background: #ffffff;
+        /* Card Container with Shadow and Corners */
+        .card {
+            background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 420px;
+            max-width: 400px;
             text-align: center;
-            color: #333;
+            transition: all 0.4s ease;
         }
 
-        h2 { 
-            color: #0f3460; 
-            margin-bottom: 0.5rem;
-            font-size: 1.8rem;
-        }
-        
-        p { 
-            font-size: 0.95rem; 
-            color: #555; 
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
+        h2 { color: var(--dark-green); margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 25px; font-size: 0.95rem; }
 
-        /* Form Styling */
         .input-group {
             text-align: left;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
-        label { 
-            display: block; 
-            margin-bottom: 8px; 
-            font-weight: 600; 
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #444;
             font-size: 0.85rem;
-            color: #0f3460;
         }
-        
+
         input {
             width: 100%;
-            padding: 14px;
-            border: 2px solid #e1e1e1;
+            padding: 12px;
+            border: 2px solid #eee;
             border-radius: 10px;
             box-sizing: border-box;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: 0.3s;
         }
 
         input:focus {
             outline: none;
-            border-color: #0f3460;
+            border-color: var(--primary-green);
         }
 
-        /* Submit Button */
         button {
             width: 100%;
-            padding: 15px;
-            background: #e94560;
+            padding: 14px;
+            background-color: var(--primary-green);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s ease, background 0.3s ease;
-            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            transition: 0.3s;
         }
 
         button:hover {
-            background: #cf3a54;
+            background-color: var(--dark-green);
             transform: translateY(-2px);
         }
 
-        button:active {
-            transform: translateY(0);
+        /* Hidden Verification State */
+        #verificationMenu {
+            display: none;
+        }
+
+        .check-icon {
+            font-size: 50px;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .btn-verify {
+            background-color: #333;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>🎁 Join Giveaway</h2>
-    <p>Complete the form below for a chance to win our exclusive prize!</p>
-
-    <form id="giveawayForm">
-        <div class="input-group">
-            <label for="nama">Full Name</label>
-            <input type="text" id="nama" placeholder="Enter your name" required>
-        </div>
+    <div class="card" id="registrationCard">
+        <h2>🎁 Giveaway</h2>
+        <p>Enter your details to participate</p>
         
-        <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="example@mail.com" required>
-        </div>
+        <form id="giveawayForm">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="fullname" placeholder="John Doe" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Instagram Username</label>
+                <input type="text" id="ig_user" placeholder="@yourname" required>
+            </div>
 
-        <button type="submit">Enter Now</button>
-    </form>
-</div>
+            <button type="submit">Submit Entry</button>
+        </form>
+    </div>
 
-<script>
-    document.getElementById('giveawayForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const name = document.getElementById('nama').value;
+    <div class="card" id="verificationMenu">
+        <div class="check-icon">✓</div>
+        <h2>Almost Done!</h2>
+        <p>Complete verification to get the prize.</p>
         
-        // Success Message
-        alert("Thank you, " + name + "! You're being redirected to the confirmation page.");
+        <button class="btn-verify" onclick="redirectToFinal()">Verify Now</button>
+    </div>
 
-        // REDIRECT LINK: Replace the URL below with your actual link
-        window.location.href = "https://www.google.com"; 
-    });
-</script>
+    <script>
+        const form = document.getElementById('giveawayForm');
+        const regCard = document.getElementById('registrationCard');
+        const verifyMenu = document.getElementById('verificationMenu');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Animasi transisi sederhana
+            regCard.style.display = 'none';
+            verifyMenu.style.display = 'block';
+        });
+
+        function redirectToFinal() {
+            // GANTI LINK DI BAWAH INI
+            window.location.href = "https://www.google.com";
+        }
+    </script>
 
 </body>
 </html>
