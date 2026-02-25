@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway Entry</title>
+    <title>Giveaway - Join Now</title>
     <style>
         :root {
-            --primary-green: #2ecc71;
-            --dark-green: #27ae60;
-            --bg-light: #f4f7f6;
+            --primary-green: #76ba6a;
+            --dark-green: #5e9c54;
+            --text-dark: #333;
+            --bg-light: #e0e7ff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,164 +22,165 @@
             margin: 0;
         }
 
-        /* Card Container with Shadow and Corners */
-        .card {
+        /* Main Container */
+        .main-container {
+            display: flex;
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 400px;
-            text-align: center;
-            transition: all 0.4s ease;
+            max-width: 850px;
+            min-height: 480px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        h2 { color: var(--dark-green); margin-bottom: 10px; }
-        p { color: #666; margin-bottom: 25px; font-size: 0.95rem; }
-
-        .input-group {
-            text-align: left;
-            margin-bottom: 15px;
+        /* Left Side (Form) */
+        .form-side {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #444;
-            font-size: 0.85rem;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
+        /* Right Side (Green Banner) */
+        .info-side {
+            flex: 1;
             background-color: var(--primary-green);
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            border-radius: 100px 0 0 100px; /* Lengkungan ikonik */
+        }
+
+        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 24px; text-transform: uppercase; }
+        .sub-h2 { color: var(--primary-green); font-weight: 800; margin-bottom: 25px; font-size: 14px; }
+
+        .input-group { margin-bottom: 15px; position: relative; }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2.5px solid #eee;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-weight: 700;
+            background: #fafafa;
+        }
+
+        input:focus { outline: none; border-color: var(--primary-green); }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-green);
+            color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(118, 186, 106, 0.4);
             transition: 0.3s;
         }
 
-        button:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-2px);
-        }
+        .btn-submit:hover { background: var(--dark-green); transform: translateY(-2px); }
 
-        /* Spinner CSS */
+        /* Spinner */
         .spinner {
-            display: none;
-            margin: 20px auto;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0,0,0,0.1);
-            border-left-color: var(--primary-green);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-green);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin: 20px auto;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Hidden States */
-        #registrationForm, #verificationMenu, #loadingSection {
-            display: none;
-        }
+        #loading, #verification { display: none; text-align: center; }
 
-        /* Default visible state */
-        #registrationForm { display: block; }
+        .info-side h1 { font-size: 40px; margin: 0; font-weight: 900; }
+        .info-side p { font-weight: 600; opacity: 0.9; margin-top: 10px; }
 
-        .check-icon {
-            font-size: 50px;
-            color: var(--primary-green);
-            margin-bottom: 15px;
-        }
-
-        .btn-verify {
-            background-color: #333;
-            margin-top: 15px;
+        @media (max-width: 768px) {
+            .main-container { flex-direction: column; height: auto; }
+            .info-side { border-radius: 0; padding: 30px; order: -1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        
-        <div id="registrationForm">
-            <h2>🎁 Giveaway</h2>
-            <p>Enter your details to participate</p>
-            <form id="giveawayForm">
-                <div class="input-group">
-                    <label>Full Name</label>
-                    <input type="text" id="fullname" placeholder="Your Name" required>
-                </div>
-                <div class="input-group">
-                    <label>Instagram Username</label>
-                    <input type="text" id="ig_user" placeholder="@yourname" required>
-                </div>
-                <button type="submit">Submit Entry</button>
-            </form>
+    <div class="main-container">
+        <div class="form-side" id="form-content">
+            <div id="registration">
+                <h2>🎁 JOIN GIVEAWAY</h2>
+                <p class="sub-h2">Fill your details to enter the draw</p>
+                
+                <form id="giveawayForm">
+                    <div class="input-group">
+                        <input type="text" id="fullname" placeholder="FULL NAME" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="ig_user" placeholder="INSTAGRAM USERNAME" required>
+                    </div>
+                    <button type="submit" class="btn-submit">SUBMIT ENTRY</button>
+                </form>
+            </div>
+
+            <div id="loading">
+                <div class="spinner"></div>
+                <h2 style="margin-top:20px;">PROCESSING...</h2>
+                <p style="font-weight: 700;">Please wait a moment</p>
+            </div>
+
+            <div id="verification">
+                <h2 style="color: var(--primary-green);">✓ SUCCESS!</h2>
+                <p style="font-weight: 800; margin: 20px 0;">COMPLETED VERIFICATION TO GET THE PRIZE</p>
+                <button class="btn-submit" style="background: #333;" onclick="finalRedirect()">VERIFY NOW</button>
+            </div>
         </div>
 
-        <div id="loadingSection">
-            <div class="spinner" style="display:block;"></div>
-            <p>Please wait, processing your entry...</p>
+        <div class="info-side">
+            <h1>Good Luck!</h1>
+            <p>Winners will be announced soon. Make sure your data is valid!</p>
         </div>
-
-        <div id="verificationMenu">
-            <div class="check-icon">✓</div>
-            <h2>Almost Done!</h2>
-            <p>Complete verification to get the prize.</p>
-            <button class="btn-verify" onclick="redirectToFinal()">Verify Now</button>
-        </div>
-
     </div>
 
     <script>
-        const regForm = document.getElementById('registrationForm');
-        const loading = document.getElementById('loadingSection');
-        const verifyMenu = document.getElementById('verificationMenu');
         const form = document.getElementById('giveawayForm');
+        const regDiv = document.getElementById('registration');
+        const loadDiv = document.getElementById('loading');
+        const verifyDiv = document.getElementById('verification');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 1. Sembunyikan Form
-            regForm.style.display = 'none';
-            // 2. Tampilkan Loading
-            loading.style.display = 'block';
+            // Transisi ke loading
+            regDiv.style.display = 'none';
+            loadDiv.style.display = 'block';
 
-            // 3. Tunggu 2.5 detik, lalu munculkan Menu Verifikasi
+            // Jeda 2.5 detik
             setTimeout(() => {
-                loading.style.display = 'none';
-                verifyMenu.style.display = 'block';
-            }, 2500); 
+                loadDiv.style.display = 'none';
+                verifyDiv.style.display = 'block';
+            }, 2500);
         });
 
-        function redirectToFinal() {
-            // GANTI LINK DI BAWAH INI
+        function finalRedirect() {
+            // GANTI LINK INI KE LINK REDIRECT TUJUANMU
             window.location.href = "https://www.google.com";
         }
     </script>
-
 </body>
 </html>
