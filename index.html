@@ -1,166 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Giveaway Entry - Desktop View Only</title>
-    <style>
-        :root {
-            --primary-blue: #3498db;
-            --dark-blue: #2980b9;
-            --light-blue: #ebf5fb;
-            --text-dark: #2c3e50;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giveaway</title>
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--light-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            /* Mengunci lebar agar HP harus scrolling horizontal (ciri khas desktop view) */
-            min-width: 950px; 
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #e85c47;
+  text-align: center;
+  color: white;
+}
 
-        .main-container {
-            display: flex;
-            background: white;
-            width: 900px; /* Lebar dikunci (Fixed Width) */
-            height: 550px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(52, 152, 219, 0.2);
-        }
+.container {
+  padding: 20px;
+}
 
-        /* Sisi Kiri (Form) */
-        .form-side {
-            flex: 1.2;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+.profile img {
+  width: 120px;
+  border-radius: 50%;
+}
 
-        /* Sisi Kanan (Banner Biru) */
-        .info-side {
-            flex: 1;
-            background-color: var(--primary-blue);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            text-align: center;
-            border-radius: 150px 0 0 150px; /* Lengkungan Desktop */
-        }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
 
-        h2 { font-weight: 900; color: var(--text-dark); margin: 0; font-size: 28px; text-transform: uppercase; }
-        .sub-h2 { color: var(--primary-blue); font-weight: 800; margin-bottom: 30px; font-size: 13px; text-transform: uppercase; }
+.card {
+  background: #fff;
+  color: #000;
+  padding: 10px;
+  border-radius: 15px;
+}
 
-        .input-group { margin-bottom: 18px; }
-        
-        input {
-            width: 100%;
-            padding: 16px;
-            border: 3px solid #f0f0f0;
-            border-radius: 15px;
-            box-sizing: border-box;
-            font-size: 14px;
-            font-weight: 800;
-            background: #f9f9f9;
-        }
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
 
-        input:focus { outline: none; border-color: var(--primary-blue); background: white; }
+button {
+  margin-top: 10px;
+  background: orange;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
 
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-weight: 900;
-            font-size: 16px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        #loading, #verification { display: none; text-align: center; }
-
-        .info-side h1 { font-size: 50px; margin: 0; font-weight: 900; }
-        .info-side p { font-weight: 700; opacity: 0.9; margin-top: 15px; font-size: 1.2rem; }
-
-    </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="form-side">
-            <div id="registration">
-                <h2>🎁 JOIN GIVEAWAY</h2>
-                <p class="sub-h2">ENTER YOUR DETAILS TO WIN</p>
-                <form id="giveawayForm">
-                    <div class="input-group"><input type="text" id="fullname" placeholder="Your Name" required></div>
-                    <div class="input-group"><input type="email" id="email" placeholder="Email address" required></div>
-                    <div class="input-group"><input type="text" id="ig_user" placeholder="@Username" required></div>
-                    <button type="submit" class="btn-submit">SUBMIT ENTRY</button>
-                </form>
-            </div>
+<div class="container">
 
-            <div id="loading">
-                <div class="spinner"></div>
-                <h2>PROCESSING...</h2>
-                <p style="font-weight: 800;">SYNCING DATA</p>
-            </div>
+  <!-- PROFILE -->
+  <div class="profile">
+    <img src="assets/profile.jpg">
+    <h2>TWENTY4TIM</h2>
+    <p>🎉 Kamu terpilih sebagai pemenang!</p>
+  </div>
 
-            <div id="verification">
-                <h2 style="color: var(--primary-blue);">✓ REGISTERED</h2>
-                <p style="font-weight: 900; margin: 25px 0; font-size: 1.1rem;">COMPLETED VERIFICATION <br> TO GET THE PRIZE </p>
-                <button class="btn-submit" style="background: #2c3e50;" onclick="finalRedirect()">VERIFY NOW</button>
-            </div>
-        </div>
+  <!-- HADIAH GRID -->
+  <div class="grid">
 
-        <div class="info-side">
-            <h1>Big Luck!</h1>
-            <p>Don't miss out on this prize!</p>
-        </div>
+    <div class="card">
+      <img src="assets/hadiah1.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
     </div>
 
-    <script>
-        const form = document.getElementById('giveawayForm');
-        const regDiv = document.getElementById('registration');
-        const loadDiv = document.getElementById('loading');
-        const verifyDiv = document.getElementById('verification');
+    <div class="card">
+      <img src="assets/hadiah2.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+    </div>
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            regDiv.style.display = 'none';
-            loadDiv.style.display = 'block';
-            setTimeout(() => {
-                loadDiv.style.display = 'none';
-                verifyDiv.style.display = 'block';
-            }, 2500);
-        });
+    <div class="card">
+      <img src="assets/hadiah3.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+    </div>
 
-        function finalRedirect() {
-            // GANTI LINK DI BAWAH INI
-            window.location.href = "https://rebrand.ly/winner-selections_";
-        }
-    </script>
+    <div class="card">
+      <img src="assets/hadiah4.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/hadiah5.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/hadiah6.jpg">
+      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+    </div>
+
+  </div>
+
+</div>
+
 </body>
 </html>
