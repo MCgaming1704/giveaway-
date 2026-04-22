@@ -20,11 +20,12 @@ body {
 
 /* FOTO PROFIL */
 .profile img {
-  width: 120px;
-  height: 120px;
+  width: 160px;   /* sebelumnya 120px */
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid white;
+  border: 4px solid white;
+  margin-top: 20px;
 }
 
 /* JUDUL */
@@ -58,15 +59,32 @@ body {
 }
 
 .card {
-  background: #fff;
-  padding: 10px;
-  border-radius: 15px;
+  position: relative;
+  background: #e85c47;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15); /* tingkat gelap */
+  border-radius: 20px;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
 }
 
 .card img {
   width: 100%;
   border-radius: 10px;
 }
+
+
 
 /* BUTTON */
 button {
@@ -119,7 +137,7 @@ button {
   <!-- TEKS ATAS -->
   <div class="desc">
     💞HERZLICHEN GLÜCKWUNSCH ZU DEINEM GEWINN💞<br><br>
-    Du wurdest auf Instagram als Gewinner ausgewählt!<br><br>
+    Du wurdest auf TikTok als Gewinner ausgewählt!<br><br>
     Du hast heute Glück gehabt, denn du wurdest ausgewählt,
     ein Geschenk von mir zu erhalten! Befolgen Sie meine Anweisungen,
     um Belohnungen zu erhalten! ~
