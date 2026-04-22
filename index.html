@@ -11,20 +11,30 @@ body {
   font-family: Arial, sans-serif;
   background: #e85c47;
   text-align: center;
-  color: black;
 }
 
+/* CONTAINER */
 .container {
   padding: 20px;
 }
 
-/* TEXT ATAS */
+/* FOTO PROFIL BULAT */
+.profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+/* JUDUL */
 .title {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
   margin-top: 10px;
 }
 
+/* DESKRIPSI */
 .desc {
   margin: 20px;
   line-height: 1.6;
@@ -58,14 +68,16 @@ body {
   border-radius: 10px;
 }
 
+/* BUTTON */
 button {
   margin-top: 10px;
   background: orange;
   border: none;
-  padding: 8px 15px;
+  padding: 10px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
+  width: 100%;
 }
 </style>
 
@@ -74,10 +86,15 @@ button {
 
 <div class="container">
 
+  <!-- FOTO PROFIL -->
+  <div class="profile">
+    <img src="assets/profile.jpg">
+  </div>
+
   <!-- JUDUL -->
   <div class="title">TWENTY4TIM</div>
 
-  <!-- DESKRIPSI -->
+  <!-- TEKS -->
   <div class="desc">
     💞HERZLICHEN GLÜCKWUNSCH ZU DEINEM GEWINN💞<br><br>
     Du wurdest auf TikTok als Gewinner ausgewählt!<br><br>
@@ -94,32 +111,32 @@ button {
 
     <div class="card">
       <img src="assets/hadiah1.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
     <div class="card">
       <img src="assets/hadiah2.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
     <div class="card">
       <img src="assets/hadiah3.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
     <div class="card">
       <img src="assets/hadiah4.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
     <div class="card">
       <img src="assets/hadiah5.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
     <div class="card">
       <img src="assets/hadiah6.jpg">
-      <button onclick="window.location.href='https://linkkamu.com'">Klaim</button>
+      <button onclick="window.location.href='https://linkkamu.com'">Jetzt registrieren</button>
     </div>
 
   </div>
